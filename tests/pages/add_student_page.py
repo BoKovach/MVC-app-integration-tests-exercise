@@ -13,19 +13,20 @@ class AddStudentPage(BasePage):
     
     @property
     def field_student_name(self):
-        return self.driver.get_element(By.CSS_SELECTOR, '#name')
+        return self.driver.find_element(By.CSS_SELECTOR, '#name')
     
     @property
     def field_student_email(self):
-        return self.driver.get_element(By.CSS_SELECTOR, '#email')
+        return self.driver.find_element(By.CSS_SELECTOR, '#email')
     
     @property
     def button_add(self):
-        return self.driver.get_element(By.CSS_SELECTOR, 'body > form > button')
+        return self.driver.find_element(By.CSS_SELECTOR, 'body > form > button')
 
     @property
     def element_error_msg(self):
-        return self.driver.get_element(By.CSS_SELECTOR, '.err')
+        elements = self.driver.find_elements(By.CSS_SELECTOR, 'body > div')
+        return elements[0].text if elements else None
 
     def add_student(self, name, email):
         self.field_student_name.send_keys(name)
@@ -33,4 +34,4 @@ class AddStudentPage(BasePage):
         self.button_add.click()
 
     def get_error_msg(self):
-        return self.element_error_msg.text
+        return self.element_error_msg

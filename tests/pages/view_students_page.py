@@ -1,3 +1,5 @@
+import json
+
 from selenium.webdriver.common.by import By
 
 from tests.pages.base_page import BasePage
@@ -12,4 +14,5 @@ class ViewStudentsPage(BasePage):
         return "http://localhost:8080/students"
 
     def get_students_list(self):
-        return self.driver.get_element(By.CSS_SELECTOR, 'body > ul')
+        ul_elements = self.driver.find_element(By.CSS_SELECTOR, 'body > ul')
+        return ul_elements.find_elements(By.TAG_NAME, 'li')

@@ -9,7 +9,7 @@ class HomePage(BasePage):
 
     @property
     def page_url(self):
-        return "http://localhost:8080"
+        return "http://localhost:8080/"
 
     def get_students_count(self):
         return self.driver.find_element(By.CSS_SELECTOR, 'body > p > b')

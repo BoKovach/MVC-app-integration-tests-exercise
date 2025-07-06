@@ -14,6 +14,7 @@ class BasePage(ABC):
     def open(self):
         self.driver.get(self.page_url)
 
+    @property
     def is_currently_open(self):
         return self.driver.current_url == self.page_url
     
@@ -26,7 +27,7 @@ class BasePage(ABC):
         return self.driver.find_element(By.CSS_SELECTOR, 'body > header > a:nth-child(3)')
     
     @property
-    def link_view_add_student_page(self):
+    def link_add_students_page(self):
         return self.driver.find_element(By.CSS_SELECTOR, 'body > header > a:nth-child(5)')
     
     @property
@@ -37,10 +38,10 @@ class BasePage(ABC):
         self.link_home_page.click()
 
     def go_to_view_students_page(self):
-        self.link_view_add_student_page.click()
+        self.link_view_students_page.click()
 
     def go_to_add_students_page(self):
-        self.link_view_students_page.click()
+        self.link_add_students_page.click()
 
     def get_page_title(self):
         return self.driver.title
