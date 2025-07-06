@@ -6,6 +6,7 @@ class BasePage(ABC):
     def __init__(self, driver):
         self.driver = driver
 
+    @property
     @abstractmethod
     def page_url(self):
         pass
@@ -30,7 +31,7 @@ class BasePage(ABC):
     
     @property
     def element_text_heading(self):
-        return self.driver.find_element(By.CSS_SELECTOR, 'body > header > a:nth-child(7)')
+        return self.driver.find_element(By.CSS_SELECTOR, 'body > h1')
 
     def go_to_home_page(self):
         self.link_home_page.click()
