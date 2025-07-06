@@ -1,10 +1,14 @@
+from abc import abstractmethod, ABC
 from selenium.webdriver.common.by import By
 
 
-class BasePage:
+class BasePage(ABC):
     def __init__(self, driver):
         self.driver = driver
-        self.page_url = 'http://localhost:8080/'
+
+    @abstractmethod
+    def page_url(self):
+        pass
 
     def open(self):
         self.driver.get(self.page_url)
